@@ -2,7 +2,7 @@
 
 Master Base is an open source project of [Live for Speed](https://lfs.net/) Master Server that allows players to host their own master server to play with friends.
 
-This Master Server was made for Live for Speed 0.6U, you can test in 0.6V but probably you will need change case switches into src/gateway.ts file, bellow case 76.
+This Master Server was made for Live for Speed 0.6U, you can test in 0.6V but probably you will need change case switches into `src/gateway.ts` file, bellow case 76.
 
 Master server shows demo license for all servers, but you can change it in environment variable LICENSE, changing 0 = Demo, 1 = S1, 2 = S2, 3 = S3.
 
@@ -24,9 +24,10 @@ Master server shows demo license for all servers, but you can change it in envir
 ### Inside game
 
 1. In windows, you'll need to edit the hosts file. You can find it in: `C:\Windows\System32\drivers\etc\hosts`
-2. In cmd or powershell, run the following command: `ipconfig/flushdns`
-3. Add the following line to the file: `<ip of master server> master.lfs.net`
-4. Save the file and start the game
+2. Add the following line to the file: `<ip of master server> master.lfs.net`
+3. Save the file
+4. In cmd or powershell, run the following command: `ipconfig/flushdns`
+5. Save the file and start the game
 
 ### Optional
 
