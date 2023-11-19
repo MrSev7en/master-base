@@ -2,6 +2,10 @@
 
 Master Base is an open source project of [Live for Speed](https://lfs.net/) Master Server that allows players to host their own master server to play with friends.
 
+This Master Server was made for Live for Speed 0.6U, you can test in 0.6V but probably you will need change case switches into /src/gateway.ts file bellow case 76.
+
+Master server shows demo license for all servers, but you can change it in environment variable LICENSE, changing 0 = Demo, 1 = S1, 2 = S2, 3 = S3.
+
 ## Installation
 
 ### Requirements
@@ -23,6 +27,10 @@ Master Base is an open source project of [Live for Speed](https://lfs.net/) Mast
 2. In cmd or powershell, run the following command: `ipconfig/flushdns`
 3. Add the following line to the file: `<ip of master server> master.lfs.net`
 4. Save the file and start the game
+
+### Optional
+
+You can also start a dedicated server using DCon, example: [DCon 0.6U](https://www.lfs.net/file_lfs.php?name=LFS_S3_DCON_6U.zip)
 
 ## Contributing
 

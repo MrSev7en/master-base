@@ -39,7 +39,7 @@ export class ConnectServerPacket {
 
     writerSecond.writeUInt8(0x14);
     writerSecond.writeUInt8(0x08);
-    writerSecond.writeUInt8(0x00);
+    writerSecond.writeUInt8(Number(process.env['LICENSE'] || 0x00));
     writerSecond.writeUInt16(server.port, true);
 
     if (

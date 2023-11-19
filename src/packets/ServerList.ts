@@ -27,7 +27,7 @@ export class ServerListPacket {
       writer.setOffset(5);
       writer.writeUInt16(servers.length, true);
       writer.setOffset(8);
-      writer.writeUInt8(0x00);
+      writer.writeUInt8(Number(process.env['LICENSE'] || 0x00));
 
       writers.push(writer);
 
@@ -44,7 +44,7 @@ export class ServerListPacket {
 
         writer.writeUInt16(server.port, true);
         writer.writeUInt8(0x08);
-        writer.writeUInt8(0x00);
+        writer.writeUInt8(Number(process.env['LICENSE'] || 0x00));
 
         chunks.push(writer.getBuffer());
       }
