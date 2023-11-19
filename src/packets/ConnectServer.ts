@@ -13,20 +13,16 @@ export class ConnectServerPacket {
   } {
     const reader = new PacketReader(buffer);
     const name = reader.skip(9).readString(32);
-    const username = reader.skip(41).readString(24);
+    const username = reader.readString(24);
 
     return { name, username };
   }
 
-  public static serialize({
-    socket,
-    user,
-    server,
-  }: {
-    socket: Socket;
-    user: User;
-    server: Server;
-  }): {
+  public static serialize(
+    socket: Socket,
+    user: User,
+    server: Server,
+  ): {
     first: Buffer;
     second: Buffer;
   } {

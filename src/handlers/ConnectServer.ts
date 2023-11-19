@@ -21,7 +21,7 @@ export const ConnectServerHandler = async (
     return socket.write(StaticPackets.userIsBanned());
   }
 
-  if (user.online) {
+  if (user.online || user.joining) {
     return socket.write(StaticPackets.userIsOnline());
   }
 
@@ -29,15 +29,11 @@ export const ConnectServerHandler = async (
     return socket.write(StaticPackets.serverNotFound());
   }
 
-  const { first, second } = ConnectServerPacket.serialize({
-    socket,
-    user,
-    server,
-  });
+  const { first, second } = ConnectServerPacket.serialize(socket, user, server);
 
   server.socket.write(first);
   await wait(2500);
 
   socket.write(second);
-  User.update(username, { online: name });
+  User.update(username, { joining: name });
 };

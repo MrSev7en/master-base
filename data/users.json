@@ -2,13 +2,15 @@
   {
     "id": 0,
     "username": "Droppz",
-    "online": "testeMaster",
+    "online": null,
+    "joining": null,
     "banned": false
   },
   {
     "id": 1,
     "username": "Zen",
     "online": null,
+    "joining": null,
     "banned": false
   }
 ]

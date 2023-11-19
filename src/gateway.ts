@@ -4,7 +4,10 @@ import { Server } from './data/server';
 import { User } from './data/user';
 import { PacketReader } from './encoders/PacketReader';
 import { ConnectServerHandler } from './handlers/ConnectServer';
-import { GameServerHandler } from './handlers/GameServer';
+import { CreateServerHandler } from './handlers/CreateServer';
+import { JoinServerHandler } from './handlers/JoinServer';
+import { LeaveServerHandler } from './handlers/LeaveServer';
+import { SearchUserHandler } from './handlers/SearchUser';
 import { ServerListHandler } from './handlers/ServerList';
 import { ServerPingHandler } from './handlers/ServerPing';
 import { logger } from './utils/logger';
@@ -47,22 +50,36 @@ export class Gateway {
         await ServerPingHandler(socket);
         break;
 
+      case 12:
+        await LeaveServerHandler(buffer);
+        break;
+
+      case 32:
+        await JoinServerHandler(buffer);
+        break;
+
       case 76:
         const type = reader.skip(5).readInt32();
 
-        // TODO: Testar "opcode" & "type" do DCon.
-
         switch (type) {
           case 128:
+          case 160:
             await ServerListHandler(socket, buffer);
             break;
 
           case 129:
+          case 161:
             await ConnectServerHandler(socket, buffer);
             break;
 
           case 130:
-            await GameServerHandler(socket, buffer);
+          case 162:
+            await CreateServerHandler(socket, buffer);
+            break;
+
+          case 132:
+          case 164:
+            await SearchUserHandler(socket, buffer);
             break;
         }
         break;
@@ -81,7 +98,7 @@ export class Gateway {
       const users = User.online(server.name);
 
       for (const user of users) {
-        User.update(user.username, { online: null });
+        User.update(user.username, { online: null, joining: null });
       }
 
       Server.remove(server.name);

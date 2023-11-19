@@ -14,6 +14,9 @@ export class User {
   /** Name of server that user is online. */
   public online!: string | null;
 
+  /** Name of server that user is joining. */
+  public joining!: string | null;
+
   /** If user is banned. */
   public banned!: boolean;
 

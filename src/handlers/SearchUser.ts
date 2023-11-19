@@ -1,15 +1,14 @@
 import type { Socket } from 'net';
 import { User } from '../data/user';
+import { SearchUserPacket } from '../packets/SearchUser';
 import { StaticPackets } from '../packets/Static';
-import { ServerListPacket } from '../packets/ServerList';
-import { wait } from '../utils/wait';
 
-export const ServerListHandler = async (
+export const SearchUserHandler = async (
   socket: Socket,
   buffer: Buffer,
 ): Promise<boolean | void> => {
-  const { username } = ServerListPacket.deserialize(buffer);
-  const list = ServerListPacket.serialize(socket);
+  const { search, username } = SearchUserPacket.deserialize(buffer);
+  const find = User.get(search);
   const user = User.get(username);
 
   if (!user) {
@@ -24,8 +23,15 @@ export const ServerListHandler = async (
     return socket.write(StaticPackets.userIsOnline());
   }
 
-  for await (const packet of list) {
-    socket.write(packet);
-    await wait(50);
+  if (!find) {
+    return socket.write(StaticPackets.unknownUser());
   }
+
+  if (!find.online && !find.joining) {
+    return socket.write(StaticPackets.userIsOffline());
+  }
+
+  const first = SearchUserPacket.serialize(String(find.online || find.joining));
+
+  socket.write(first);
 };

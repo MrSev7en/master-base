@@ -14,7 +14,7 @@ export class ServerListPacket {
     return { username };
   }
 
-  public static serialize({ socket }: { socket: Socket }): Buffer[] {
+  public static serialize(socket: Socket): Buffer[] {
     const writers: PacketWriter[] = [];
     const servers = Server.list();
     const chunks: Buffer[] = [];

@@ -1,16 +1,18 @@
 import { PacketReader } from '../encoders/PacketReader';
 import { PacketWriter } from '../encoders/PacketWriter';
 
-export class HostServerPacket {
+export class CreateServerPacket {
   public static deserialize(buffer: Buffer): {
     name: string;
+    username: string;
     port: number;
   } {
     const reader = new PacketReader(buffer);
     const name = reader.skip(9).readString(32);
+    const username = reader.readString(24);
     const port = reader.setOffset(73).readUInt16(true);
 
-    return { name, port };
+    return { name, username, port };
   }
 
   public static serialize(): { first: Buffer; second: Buffer; third: Buffer } {

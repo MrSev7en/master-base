@@ -9,10 +9,8 @@
     "pnpm": ">= 8.10.5"
   },
   "scripts": {
-    "build": "tsup src/main.ts",
-    "start": "node dist/main.js",
-    "watch": "tsup --watch src/main.ts",
-    "dev": "node --watch dist/main.js"
+    "start": "tsup --onSuccess \"node dist/main.js\"",
+    "dev": "tsup --watch --onSuccess \"node dist/main.js\""
   },
   "dependencies": {
     "dotenv": "^16.3.1",
