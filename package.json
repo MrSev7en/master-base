@@ -1,0 +1,27 @@
+{
+  "name": "master-base",
+  "author": "MrSev7en <mrsev7en.official@gmail.com>",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">= 20.2.0",
+    "pnpm": ">= 8.10.5"
+  },
+  "scripts": {
+    "build": "tsup src/main.ts",
+    "start": "node dist/main.js",
+    "watch": "tsup --watch src/main.ts",
+    "dev": "node --watch dist/main.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "pino": "^8.16.2",
+    "pino-pretty": "^10.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.2",
+    "tsup": "^7.3.0",
+    "typescript": "^5.2.2"
+  }
+}

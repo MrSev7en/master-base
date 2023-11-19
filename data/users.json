@@ -1,0 +1,14 @@
+[
+  {
+    "id": 0,
+    "username": "Droppz",
+    "online": "testeMaster",
+    "banned": false
+  },
+  {
+    "id": 1,
+    "username": "Zen",
+    "online": null,
+    "banned": false
+  }
+]
