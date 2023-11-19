@@ -4,6 +4,10 @@
   "version": "0.0.1",
   "license": "MIT",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrSev7en/master-base/"
+  },
   "engines": {
     "node": ">= 20.2.0",
     "pnpm": ">= 8.10.5"
