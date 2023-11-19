@@ -2,7 +2,7 @@
 
 Master Base is an open source project of [Live for Speed](https://lfs.net/) Master Server that allows players to host their own master server to play with friends.
 
-This Master Server was made for Live for Speed 0.6U, you can test in 0.6V but probably you will need change case switches into /src/gateway.ts file bellow case 76.
+This Master Server was made for Live for Speed 0.6U, you can test in 0.6V but probably you will need change case switches into src/gateway.ts file, bellow case 76.
 
 Master server shows demo license for all servers, but you can change it in environment variable LICENSE, changing 0 = Demo, 1 = S1, 2 = S2, 3 = S3.
 
