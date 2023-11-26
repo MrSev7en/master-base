@@ -9,7 +9,7 @@ export const LeaveServerHandler = async (
   if (buffer[3] === 0x4c) {
     const { id } = LeaveServerPacket.deserialize(buffer);
     const users = User.list();
-    const user = users.find((user) => user.id === unparseId(id));
+    const user = users.find((user) => (user.id + 1) === unparseId(id));
 
     if (user) {
       User.update(user.username, { online: null, joining: null });

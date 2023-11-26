@@ -26,7 +26,7 @@ export class ConnectServerPacket {
     first: Buffer;
     second: Buffer;
   } {
-    const id = parseId(user.id);
+    const id = parseId(user.id + 1);
     const writerFirst = new PacketWriter(33);
     const writerSecond = new PacketWriter(21);
 
