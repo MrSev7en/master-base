@@ -27,7 +27,7 @@ Master server shows demo license for all servers, but you can change it in envir
 2. Add the following line to the file: `<ip of master server> master.lfs.net`
 3. Save the file
 4. In cmd or powershell, run the following command: `ipconfig/flushdns`
-5. Save the file and start the game
+5. Start the game
 
 ### Optional
 
